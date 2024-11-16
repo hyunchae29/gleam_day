@@ -5,17 +5,25 @@ class TutorialPage3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Icon(Icons.bookmark, size: 100, color: Colors.blue),
+        children: [
+          Spacer(flex: 2),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Icon(Icons.calendar_today, color: Colors.green, size: 90),
+              Icon(Icons.bookmark, color: Colors.purple, size: 90),
+              Icon(Icons.notifications, color: Colors.red, size: 90),
+            ],
+          ),
           SizedBox(height: 20),
           Text(
-            '저장하고, 기록할 수 있어요!\n알림과 잠금화면도 설정 가능!',
+            '메모하고 저장할 수 있어요!',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
+          Spacer(flex: 3)
         ],
       ),
     );

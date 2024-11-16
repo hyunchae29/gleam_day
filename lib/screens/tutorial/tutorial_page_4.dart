@@ -5,17 +5,19 @@ class TutorialPage4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
+    return const Center(
+      child:
+      Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Icon(Icons.thumb_up, size: 100, color: Colors.green),
+        children: [
+          Spacer(flex: 2),
+          Icon(Icons.thumb_up, color: Colors.green, size: 90),
           SizedBox(height: 20),
           Text(
             '그리고 행운을 빌어드려요!',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
+          Spacer(flex: 3)
         ],
       ),
     );
