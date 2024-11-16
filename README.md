@@ -1,6 +1,7 @@
 # gleam_day
 
-Personal jewelry recommendation ap
+Personal jewelry recommendation app
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
