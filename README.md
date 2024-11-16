@@ -1,16 +1,3 @@
-# gleam_day
-
-Personal jewelry recommendation app
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Gleam Day
+이 프로젝트는 Flutter로 개발한 데일리 주얼리 추천 앱입니다. 
+사용자의 기분이나 상황에 맞춰 주얼리를 추천해주는 기능을 제공합니다.
