@@ -42,16 +42,16 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF201D1D), // 배경색 설정
+      backgroundColor: Color(0xFF201D1D), // 배경색 설정
       body: SafeArea(
         child: Stack(
           children: [
             Center(
               child: AnimatedSwitcher(
-                duration: const Duration(milliseconds: 500),
+                duration: Duration(milliseconds: 500),
                 child: _showFirstPage
-                    ? _buildFirstPage(context) // 첫 번째 페이지
-                    : _buildSecondPage(context), // 두 번째 페이지
+                    ? _buildFirstPage(context)
+                    : _buildSecondPage(context),
               ),
             ),
             Positioned(
@@ -62,22 +62,20 @@ class _MainPageState extends State<MainPage> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,
                   foregroundColor: Colors.white,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 ),
-                child: const Text('튜토리얼로 돌아가기'),
+                child: Text('튜토리얼로 돌아가기'),
               ),
             ),
             Positioned(
               top: 20,
               left: 20,
               child: Image.asset(
-                'assets/icon_ring.png', // 이미지 경로
+                'assets/icon_ring.png',
                 width: 100,
                 height: 100,
               ),
             ),
-            _buildBottomNavigationBar(), // 하단 네비게이션 바
+            _buildBottomNavigationBar(),
           ],
         ),
       ),
@@ -105,10 +103,10 @@ class _MainPageState extends State<MainPage> {
 
   Widget _buildSecondPage(BuildContext context) {
     return Column(
-      key: const ValueKey(2),
+      key: ValueKey(2),
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center, // 가운데 정렬
-      children: const [
+      children: [
         Text(
           '오늘은\n어떤 날\n인가요?',
           textAlign: TextAlign.left, // 텍스트 내부 중앙 정렬

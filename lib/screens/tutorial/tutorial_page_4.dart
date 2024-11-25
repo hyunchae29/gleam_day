@@ -5,9 +5,8 @@ class TutorialPage4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child:
-      Column(
+    return Center(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Spacer(flex: 2),

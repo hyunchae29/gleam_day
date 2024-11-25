@@ -8,17 +8,17 @@ class TutorialPage1 extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Spacer(flex: 2), // 위쪽 여백
+        Spacer(flex: 2),
         Image.asset(
-          'assets/icon_ring.png', // 이미지 경로 (assets 폴더 기준)
-          width: 100, // 기존 Icon 크기와 동일
+          'assets/icon_ring.png',
+          width: 100,
           height: 100,
         ),
         SizedBox(height: 20),
         Text(
           '매일매일 주얼리를 추천해드려요!',
         ),
-        Spacer(flex: 3), // 아래쪽 여백
+        Spacer(flex: 3),
       ],
     );
   }
