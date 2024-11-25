@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart'; // SharedPreferences import
 import 'screens/tutorial/tutorial_main.dart';
+import 'screens/main_page.dart';
 
 void main() {
   runApp(const GleamDayApp());
@@ -36,7 +38,41 @@ class GleamDayApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const TutorialMain(), // 튜토리얼 메인 화면
+      home: const LandingPage(),
     );
+  }
+}
+
+class LandingPage extends StatefulWidget {
+  const LandingPage({super.key});
+
+  @override
+  State<LandingPage> createState() => _LandingPageState();
+}
+
+class _LandingPageState extends State<LandingPage> {
+  bool _showTutorial = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkTutorialStatus();
+  }
+
+  Future<void> _checkTutorialStatus() async {
+    final prefs = await SharedPreferences.getInstance(); // SharedPreferences 사용
+    bool hasSeenTutorial = prefs.getBool('hasSeenTutorial') ?? false;
+    setState(() {
+      _showTutorial = !hasSeenTutorial;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_showTutorial) {
+      return const TutorialMain();
+    } else {
+      return const MainPage();
+    }
   }
 }

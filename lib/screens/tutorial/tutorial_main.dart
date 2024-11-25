@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'tutorial_page_1.dart';
 import 'tutorial_page_2.dart';
 import 'tutorial_page_3.dart';
 import 'tutorial_page_4.dart';
+import '../main_page.dart';
 
 class TutorialMain extends StatefulWidget {
   const TutorialMain({super.key});
@@ -16,6 +18,14 @@ class TutorialMain extends StatefulWidget {
 class _TutorialMainState extends State<TutorialMain> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
+
+  Future<void> _completeTutorial() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('hasSeenTutorial', true); // 튜토리얼 완료 상태 저장
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (context) => const MainPage()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +49,7 @@ class _TutorialMainState extends State<TutorialMain> {
           ),
           // 페이지 인디케이터
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.6, // 화면 중앙보다 살짝 아래
+            top: MediaQuery.of(context).size.height * 0.6,
             left: 0,
             right: 0,
             child: Center(
@@ -59,9 +69,9 @@ class _TutorialMainState extends State<TutorialMain> {
               ),
             ),
           ),
-          // "다음" 버튼
+          // "다음"/"시작하기" 버튼
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.7, // 인디케이터 아래 10% 더 내려서 배치
+            top: MediaQuery.of(context).size.height * 0.7,
             left: 0,
             right: 0,
             child: Center(
@@ -73,13 +83,14 @@ class _TutorialMainState extends State<TutorialMain> {
                       curve: Curves.easeInOut,
                     );
                   } else {
-                    // 튜토리얼 완료 후 다른 화면으로 이동
+                    _completeTutorial(); // 튜토리얼 완료 처리
                   }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF373333),
                   foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 ),
                 child: Text(_currentPage < 3 ? "다음" : "시작하기"),
               ),

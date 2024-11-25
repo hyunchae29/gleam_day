@@ -5,14 +5,14 @@ class TutorialPage1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Spacer(flex: 2), // 위쪽 여백
-        Icon(
-          Icons.favorite,
-          color: Colors.pink,
-          size: 100, // 튜토리얼 1번 아이콘 크기로 통일
+        Image.asset(
+          'assets/icon_ring.png', // 이미지 경로 (assets 폴더 기준)
+          width: 100, // 기존 Icon 크기와 동일
+          height: 100,
         ),
         SizedBox(height: 20),
         Text(
