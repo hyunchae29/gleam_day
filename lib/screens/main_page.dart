@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gleam_day/screens/tutorial/tutorial_main.dart';
+import 'package:gleam_day/screens/see_more/settings_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -154,7 +155,12 @@ class _MainPageState extends State<MainPage> {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingsPage()),
+                );
+              },
               icon: const Icon(
                 Icons.menu,
                 color: Colors.white,
