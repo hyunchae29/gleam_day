@@ -19,19 +19,19 @@ GleamDay가 추천하는 다양한 악세서리를 확인할 수 있습니다.
 이 프로젝트의 목표는 사용자가 일상의 작은 순간에도 자신을 표현하고 즐길 수 있도록 돕는 것입니다.
 악세서리는 단순한 장식 이상의 의미를 지닐 수 있으며, 사용자가 매일 새로운 기분으로 하루를 시작할 수 있도록 긍정적인 에너지를 제공합니다.
 
-프로젝트 구조 test
-GleamDay  
-├── src
-│   ├── components
-│   │   ├── Button.dart
-│   │   └── Header.dart
-│   ├── models
-│   │   └── UserModel.dart
-│   └── utils
-│       └── helpers.dart
-├── assets
-│   ├── images
-│   │   └── logo.png
-│   └── fonts
-├── pubspec.yaml
-└── README.md
+프로젝트 구조 test  
+GleamDay 
+├── src 
+│   ├── components 
+│   │   ├── Button.dart 
+│   │   └── Header.dart 
+│   ├── models 
+│   │   └── UserModel.dart 
+│   └── utils 
+│       └── helpers.dart 
+├── assets 
+│   ├── images 
+│   │   └── logo.png 
+│   └── fonts 
+├── pubspec.yaml 
+└── README.md 
