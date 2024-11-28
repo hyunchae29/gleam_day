@@ -20,13 +20,14 @@ GleamDay가 추천하는 다양한 악세서리를 확인할 수 있습니다.
 악세서리는 단순한 장식 이상의 의미를 지닐 수 있으며, 사용자가 매일 새로운 기분으로 하루를 시작할 수 있도록 긍정적인 에너지를 제공합니다.
 
 프로젝트 구조 test  
-GleamDay  
+GleamDay
+```dart
 ├── src  
 │   ├── components  
 │   │   ├── Button.dart  
 │   │   └── Header.dart  
 │   ├── models  
-│   │ └── UserModel.dart  
+│   │    └── UserModel.dart  
 │   └── utils  
 │   └── helpers.dart  
 ├── assets  
@@ -35,3 +36,4 @@ GleamDay
 │  └── fonts  
 ├── pubspec.yaml  
 └── README.md
+```
