@@ -21,17 +21,17 @@ GleamDay가 추천하는 다양한 악세서리를 확인할 수 있습니다.
 
 프로젝트 구조 test  
 GleamDay  
-├── src  
-│   ├── components  
-│   │   ├── Button.dart  
-│   │   └── Header.dart  
-│   ├── models  
-│   │   └── UserModel.dart  
-│   └── utils  
-│       └── helpers.dart  
-├── assets  
-│   ├── images  
-│   │   └── logo.png  
-│   └── fonts  
-├── pubspec.yaml  
-└── README.md  
+├── src
+│   ├── components
+│   │   ├── Button.dart
+│   │   └── Header.dart
+│   ├── models
+│   │ └── UserModel.dart
+│   └── utils
+│   └── helpers.dart
+├── assets
+│  ├── images
+│  │   └── logo.png
+│  └── fonts
+├── pubspec.yaml
+└── README.md
