@@ -1,29 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart'; // SharedPreferences import
-import 'screens/tutorial/tutorial_main.dart';
-import 'screens/main_page.dart';
+import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'screens/routers/app_router.dart';
 
-void main() {
-  runApp(const GleamDayApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final prefs = await SharedPreferences.getInstance();
+  final bool hasSeenTutorial = prefs.getBool('hasSeenTutorial') ?? false;
+  runApp(GleamDayApp(hasSeenTutorial: hasSeenTutorial));
 }
 
-class GleamDayApp extends StatelessWidget {
-  const GleamDayApp({super.key});
+class GleamDayApp extends StatefulWidget {
+  final bool hasSeenTutorial;
+
+  const GleamDayApp({super.key, required this.hasSeenTutorial});
+
+  @override
+  _GleamDayAppState createState() => _GleamDayAppState();
+}
+
+class _GleamDayAppState extends State<GleamDayApp> {
+  late GoRouter _router;
+
+  @override
+  void initState() {
+    super.initState();
+    _router = createRouter(widget.hasSeenTutorial);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Gleam Day',
       theme: ThemeData(
-        brightness: Brightness.dark, // 다크 테마 적용
-        scaffoldBackgroundColor: const Color(0xFF201D1D), // 배경색 설정
-        fontFamily: 'YujiMai', // 기본 영어 폰트
+        scaffoldBackgroundColor: const Color(0xFF201D1D),
+        canvasColor: Color(0xFF201D1D), // 기본 canvas 색상 설정
+        fontFamily: 'YujiMai',
         textTheme: const TextTheme(
           bodyLarge: TextStyle(
             fontSize: 20,
-            fontFamilyFallback: ['GowunBatang'], // 한국어 대체 폰트
-            color: Colors.white, // 글자 색상
+            fontFamilyFallback: ['GowunBatang'],
+            color: Colors.white,
           ),
           bodyMedium: TextStyle(
             fontSize: 20,
@@ -37,42 +55,12 @@ class GleamDayApp extends StatelessWidget {
             color: Colors.white,
           ),
         ),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white.withOpacity(0.5),
+        ),
       ),
-      home: const LandingPage(),
+      routerConfig: _router,
     );
-  }
-}
-
-class LandingPage extends StatefulWidget {
-  const LandingPage({super.key});
-
-  @override
-  State<LandingPage> createState() => _LandingPageState();
-}
-
-class _LandingPageState extends State<LandingPage> {
-  bool _showTutorial = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _checkTutorialStatus();
-  }
-
-  Future<void> _checkTutorialStatus() async {
-    final prefs = await SharedPreferences.getInstance(); // SharedPreferences 사용
-    bool hasSeenTutorial = prefs.getBool('hasSeenTutorial') ?? false;
-    setState(() {
-      _showTutorial = !hasSeenTutorial;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (_showTutorial) {
-      return const TutorialMain();
-    } else {
-      return const MainPage();
-    }
   }
 }

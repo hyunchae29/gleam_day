@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:go_router/go_router.dart';
 import 'tutorial_page_1.dart';
 import 'tutorial_page_2.dart';
 import 'tutorial_page_3.dart';
@@ -22,9 +23,8 @@ class _TutorialMainState extends State<TutorialMain> {
   Future<void> _completeTutorial() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('hasSeenTutorial', true); // 튜토리얼 완료 상태 저장
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (context) => const MainPage()),
-    );
+    GoRouter.of(context)
+        .go('/recommendation'); // GoRouter를 사용해 recommendation 경로로 이동
   }
 
   @override
@@ -98,6 +98,7 @@ class _TutorialMainState extends State<TutorialMain> {
           ),
         ],
       ),
+      bottomNavigationBar: null,
     );
   }
 }

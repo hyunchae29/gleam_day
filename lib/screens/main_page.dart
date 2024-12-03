@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:gleam_day/screens/tutorial/tutorial_main.dart';
-import 'package:gleam_day/screens/see_more/settings_page.dart';
+import 'package:shared_preferences/shared_preferences.dart'; // SharedPreferences import
+import 'package:gleam_day/screens/tutorial/tutorial_main.dart'; // TutorialMain import
+import 'package:go_router/go_router.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -32,7 +32,7 @@ class _MainPageState extends State<MainPage> {
 
   Future<void> _goBackToTutorial() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('hasSeenTutorial', false); // 튜토리얼 완료 상태 초기화
+    await prefs.setBool('hasSeenTutorial', false);
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
         builder: (context) => const TutorialMain(),
@@ -42,58 +42,51 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xFF201D1D), // 배경색 설정
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Center(
-              child: AnimatedSwitcher(
-                duration: Duration(milliseconds: 500),
-                child: _showFirstPage
-                    ? _buildFirstPage(context)
-                    : _buildSecondPage(context),
-              ),
-            ),
-            Positioned(
-              top: 20,
-              right: 20,
-              child: ElevatedButton(
-                onPressed: _goBackToTutorial, // 튜토리얼로 돌아가기 버튼 동작
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
-                  foregroundColor: Colors.white,
+    return GestureDetector(
+      onTap: () {
+        context.go('/recommendation'); // 첫 번째 메뉴 페이지로 이동
+      },
+      child: Scaffold(
+        backgroundColor: const Color(0xFF201D1D), // 배경색 설정
+        body: SafeArea(
+          child: Stack(
+            children: [
+              Center(
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 500),
+                  child: _showFirstPage
+                      ? _buildFirstPage(context)
+                      : _buildSecondPage(context),
                 ),
-                child: Text('튜토리얼로 돌아가기'),
               ),
-            ),
-            Positioned(
-              top: 20,
-              left: 20,
-              child: Image.asset(
-                'assets/icon_ring.png',
-                width: 100,
-                height: 100,
+              Positioned(
+                top: 20,
+                right: 20,
+                child: Image.asset(
+                  'assets/icon_ring.png',
+                  width: 150,
+                  height: 150,
+                ),
               ),
-            ),
-            _buildBottomNavigationBar(),
-          ],
+            ],
+          ),
         ),
+        bottomNavigationBar: null,
       ),
     );
   }
 
   Widget _buildFirstPage(BuildContext context) {
     return Column(
-      key: ValueKey(1),
+      key: const ValueKey(1),
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center, // 가운데 정렬
-      children: [
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: const [
         Text(
           'How\ndo you\nfeel\ntoday?',
-          textAlign: TextAlign.left, // 텍스트 내부 중앙 정렬
+          textAlign: TextAlign.left,
           style: TextStyle(
-            fontSize: 72, // 글씨 크기
+            fontSize: 72,
             fontFamily: 'YujiMai',
             color: Colors.white,
           ),
@@ -104,72 +97,20 @@ class _MainPageState extends State<MainPage> {
 
   Widget _buildSecondPage(BuildContext context) {
     return Column(
-      key: ValueKey(2),
+      key: const ValueKey(2),
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center, // 가운데 정렬
-      children: [
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: const [
         Text(
           '오늘은\n어떤 날\n인가요?',
-          textAlign: TextAlign.left, // 텍스트 내부 중앙 정렬
+          textAlign: TextAlign.left,
           style: TextStyle(
-            fontSize: 72, // 글씨 크기
+            fontSize: 72,
             fontFamily: 'GowunBatang',
             color: Colors.white,
           ),
         ),
       ],
-    );
-  }
-
-  Widget _buildBottomNavigationBar() {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: Container(
-        color: const Color(0xFF201D1D),
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.calendar_today,
-                color: Colors.white,
-                size: 28,
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.bookmark_outline,
-                color: Colors.white,
-                size: 36,
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.chat_bubble_outline,
-                color: Colors.white,
-                size: 28,
-              ),
-            ),
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SettingsPage()),
-                );
-              },
-              icon: const Icon(
-                Icons.menu,
-                color: Colors.white,
-                size: 36,
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
