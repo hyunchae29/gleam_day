@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart'; // SharedPreferences import
-import 'package:gleam_day/screens/tutorial/tutorial_main.dart'; // TutorialMain import
 import 'package:go_router/go_router.dart';
 
 class MainPage extends StatefulWidget {
@@ -28,16 +26,6 @@ class _MainPageState extends State<MainPage> {
         _startAutoSwitch();
       }
     });
-  }
-
-  Future<void> _goBackToTutorial() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('hasSeenTutorial', false);
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (context) => const TutorialMain(),
-      ),
-    );
   }
 
   @override

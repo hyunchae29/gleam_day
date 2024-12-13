@@ -35,7 +35,7 @@ class _GleamDayAppState extends State<GleamDayApp> {
       title: 'Gleam Day',
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFF201D1D),
-        canvasColor: Color(0xFF201D1D), // 기본 canvas 색상 설정
+        canvasColor: Color(0xFF201D1D), // 기본 색상 설정
         fontFamily: 'YujiMai',
         textTheme: const TextTheme(
           bodyLarge: TextStyle(

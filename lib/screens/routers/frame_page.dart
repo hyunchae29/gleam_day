@@ -42,7 +42,7 @@ class FramePage extends StatelessWidget {
                     Icons.calendar_today,
                     size: 28,
                   ),
-                  label: 'Calendar',
+                  label: 'Recommendation',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
@@ -53,7 +53,7 @@ class FramePage extends StatelessWidget {
                     Icons.bookmark,
                     size: 35,
                   ),
-                  label: 'Bookmark',
+                  label: 'Memo',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
@@ -64,7 +64,7 @@ class FramePage extends StatelessWidget {
                     Icons.tag_faces,
                     size: 35,
                   ),
-                  label: 'Chat',
+                  label: 'emoji',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
@@ -78,13 +78,10 @@ class FramePage extends StatelessWidget {
                   label: 'Menu',
                 ),
               ],
-              showUnselectedLabels: false, // 라벨 숨김 설정
-              showSelectedLabels: false, // 라벨 숨김 설정
+              showUnselectedLabels: false,
+              showSelectedLabels: false,
               type: BottomNavigationBarType.fixed, // 아이템 이동 방지
-              enableFeedback: false, // 클릭 시 진동 및 음향 효과 비활성화
-              selectedFontSize: 0, // 선택된 항목의 폰트 크기를 0으로 설정
-              unselectedFontSize: 0, // 선택되지 않은 항목의 폰트 크기를 0으로 설정
-            )
+              enableFeedback: false)
           : null,
     );
   }
