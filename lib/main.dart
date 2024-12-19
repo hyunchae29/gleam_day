@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/routers/app_router.dart';
+import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
   final bool hasSeenTutorial = prefs.getBool('hasSeenTutorial') ?? false;
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),
+  );
   runApp(GleamDayApp(hasSeenTutorial: hasSeenTutorial));
 }
 

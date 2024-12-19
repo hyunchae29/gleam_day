@@ -61,17 +61,17 @@ class _CheckEmotionState extends State<CheckEmotion> {
                     Icon(
                       Icons.sentiment_very_dissatisfied,
                       color: const Color(0xFF75A8FF),
-                      size: 50.0,
+                      size: 70.0,
                     ),
                     Icon(
                       Icons.sentiment_neutral,
                       color: Colors.grey,
-                      size: 50.0,
+                      size: 70.0,
                     ),
                     Icon(
-                      Icons.sentiment_satisfied,
+                      Icons.sentiment_very_satisfied,
                       color: const Color(0xFFFFC1C1),
-                      size: 50.0,
+                      size: 70.0,
                     ),
                   ],
                 ),

@@ -13,6 +13,7 @@ class _MemoMainState extends State<MemoMain> {
     return Scaffold(
       backgroundColor: const Color(0xFF201D1D),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Align(
             alignment: Alignment.topCenter,
@@ -40,8 +41,48 @@ class _MemoMainState extends State<MemoMain> {
               ),
             ),
           ),
-          // Bottom spacer
           const SizedBox(height: 80.0),
+          Column(
+            children: [
+              Text(
+                '아직 추가된 게 없어요!',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontFamily: 'GowunBatang',
+                  fontSize: 18.0,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 20.0),
+              Icon(
+                Icons.edit_note,
+                size: 150.0,
+                color: Colors.white,
+              ),
+              const SizedBox(height: 30.0),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.grey[800],
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 30.0, vertical: 12.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                ),
+                onPressed: () {
+                  // TODO: Add navigation or action logic here okay
+                },
+                child: const Text(
+                  '오늘을 기록 추가하기',
+                  style: TextStyle(
+                    fontFamily: 'GowunBatang',
+                    fontSize: 18.0,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );

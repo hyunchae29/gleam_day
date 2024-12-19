@@ -104,14 +104,15 @@ class _SelectEmojiState extends State<SelectEmoji> {
         return AlertDialog(
           backgroundColor: const Color(0xFF201D1D),
           title: const Text(
-            '이 세 가지로 할까요?',
+            '이 3가지로 할까요?',
+            textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white, fontFamily: 'GowunBatang'),
           ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: selectedEmojis
                 .map((emoji) => Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 5.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
                       child: Image.asset(
                         emoji,
                         width: 50,
@@ -120,6 +121,7 @@ class _SelectEmojiState extends State<SelectEmoji> {
                     ))
                 .toList(),
           ),
+          actionsAlignment: MainAxisAlignment.center,
           actions: [
             TextButton(
               onPressed: () {
@@ -130,9 +132,11 @@ class _SelectEmojiState extends State<SelectEmoji> {
                 style: TextStyle(color: Colors.red),
               ),
             ),
+            const SizedBox(width: 20.0),
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); // 다음 동작 추가 가능
+                Navigator.of(context).pop();
+                context.go('/recommendation/finding_page');
               },
               child: const Text(
                 '다음',

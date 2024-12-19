@@ -30,6 +30,7 @@ flutter:
   assets:
     - assets/
     - assets/emoji/
+    - assets/images/
 
   fonts:
     - family: YujiMai
