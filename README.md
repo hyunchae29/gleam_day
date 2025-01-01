@@ -22,36 +22,59 @@ GleamDay가 추천하는 다양한 악세서리를 확인할 수 있습니다.
 ## 프로젝트 구조
 ``` dart
 Gleam Day
+lib
+├── database_helper.dart
 ├── main.dart
+├── models
+│   ├── emoji_model.dart
+│   ├── memo_model.dart
+│   └── recommendation_model.dart
+├── providers
+│   ├── emoji_provider.dart
+│   ├── memo_provider.dart
+│   └── recommendation_provider.dart
+├── repositories
+│   ├── emoji_repository.dart
+│   ├── memo_repository.dart
+│   └── recommendation_repository.dart
 └── screens
     ├── emoji
-    │    ├── emoji_create.dart
-    │    ├── emoji_main.dart
-    │    └── emoji_setting.dart
+    │   ├── emoji_create.dart
+    │   ├── emoji_main.dart
+    │   └── emoji_setting.dart
     ├── main_page.dart
     ├── memo
-    │    ├── memo_first.dart
-    │    ├── memo_main.dart
-    │    └── memo_saved.dart
+    │   ├── memo_main.dart
+    │   └── memo_saved.dart
     ├── recommendation
-    │    ├── check_emotion.dart
-    │    ├── fail_1.dart
-    │    ├── fail_2.dart
-    │    ├── finding_page.dart
-    │    ├── result_1.dart
-    │    ├── result_2.dart
-    │    └── select_emoji.dart
+    │   ├── check_emotion.dart
+    │   ├── fail_1.dart
+    │   ├── fail_2.dart
+    │   ├── finding_page.dart
+    │   ├── luck.dart
+    │   ├── result.dart
+    │   ├── select_emoji.dart
+    │   ├── success_1.dart
+    │   └── success_2.dart
     ├── routers
-    │    ├── app_router.dart
-    │    └── frame_page.dart
+    │   ├── app_router.dart
+    │   └── frame_page.dart
     ├── see_more
-    │    ├── clear_cache_page.dart
-    │    ├── lock_settings_page.dart
-    │    └── settings_page.dart
+    │   ├── clear_cache_page.dart
+    │   ├── lock_settings_page.dart
+    │   └── settings_page.dart
     └── tutorial
+        ├── tutorial_luck.dart
         ├── tutorial_main.dart
         ├── tutorial_page_1.dart
         ├── tutorial_page_2.dart
         ├── tutorial_page_3.dart
         └── tutorial_page_4.dart
 ```
+## 사용 기술
+- **Flutter**: 크로스 플랫폼 UI 개발
+- **Dart**: Flutter의 프로그래밍 언어로 전체 로직 구현
+- **SQLite**: 오프라인 데이터 저장
+- **Firebase**: 사용자 인증 및 데이터 동기화
+- **Riverpod**: 상태 관리 및 데이터 로직 처리
+- **MVVM**: 클린 아키텍처 적용
