@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "225491597745",
+    "project_id": "gleamday-d5cc8",
+    "storage_bucket": "gleamday-d5cc8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225491597745:android:d31287b43242eeb8bd6590",
+        "android_client_info": {
+          "package_name": "com.gleamday.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzVErzvcatm0A3BURp0hD5Mrdpm6LfBu0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

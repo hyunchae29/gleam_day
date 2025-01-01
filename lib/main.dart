@@ -7,15 +7,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/routers/app_router.dart';
 import 'package:flutter/services.dart';
 import 'database_helper.dart';
-import 'package:sqflite/sqflite.dart'; // 추가
+import 'package:sqflite/sqflite.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // SQLite 데이터베이스 초기화
+  await Firebase.initializeApp();
   await DatabaseHelper.instance.database;
-
-  // 데이터베이스 파일 확인
   await checkDatabaseFile();
 
   final prefs = await SharedPreferences.getInstance();
@@ -29,7 +27,7 @@ void main() async {
 }
 
 Future<void> checkDatabaseFile() async {
-  final dbPath = await getDatabasesPath(); // getDatabasesPath 메서드 정상 사용
+  final dbPath = await getDatabasesPath();
   final path = join(dbPath, 'gleamday.db');
 
   final fileExists = await File(path).exists();
