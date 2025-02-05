@@ -21,6 +21,8 @@ dependencies:
   path_provider: ^2.1.5
   firebase_core: ^3.8.1
   firebase_auth: ^5.3.4
+  flutter_local_notifications : ^18.0.1
+
 
 dev_dependencies:
   flutter_test:
@@ -34,13 +36,12 @@ flutter:
 
   assets:
     - assets/
-    - assets/emoji/
     - assets/images/
 
   fonts:
-    - family: YujiMai
+    - family: Arima
       fonts:
-        - asset: assets/fonts/YujiMai-Regular.ttf
-    - family: GowunBatang
+        - asset: assets/fonts/Arima-Bold.ttf
+    - family: NanumGothic
       fonts:
-        - asset: assets/fonts/GowunBatang-Bold.ttf
+        - asset: assets/fonts/NanumGothic-Bold.ttf

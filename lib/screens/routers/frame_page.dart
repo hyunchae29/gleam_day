@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../core/theme.dart'; // 테마 파일 import
 
 class FramePage extends StatelessWidget {
   final Widget child;
@@ -11,78 +12,90 @@ class FramePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> routes = [
-      '/recommendation',
-      '/memo',
+      '/home',
+      '/note',
       '/emoji',
-      '/settings',
+      '/my',
     ];
 
-    // 현재 위치 가져오기
     final GoRouter goRouter = GoRouter.of(context);
     final String currentLocation =
         goRouter.routerDelegate.currentConfiguration?.uri.toString() ?? '';
     final int currentIndex = routes.indexOf(currentLocation);
     final int validIndex = currentIndex != -1 ? currentIndex : 0;
 
-    return Scaffold(
-      body: child,
-      bottomNavigationBar: showBottomNav
-          ? BottomNavigationBar(
-              currentIndex: validIndex,
-              onTap: (index) {
-                context.go(routes[index]);
-              },
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.calendar_today_outlined,
-                    size: 28,
-                  ),
-                  activeIcon: Icon(
-                    Icons.calendar_today,
-                    size: 28,
-                  ),
-                  label: 'Recommendation',
+    return AppBackground(
+      child: Scaffold(
+        backgroundColor: Colors.transparent, // Scaffold 배경 투명 설정
+        body: child,
+        bottomNavigationBar: showBottomNav
+            ? Container(
+                decoration: const BoxDecoration(
+                  border:
+                      Border(top: BorderSide(color: Colors.black, width: 1)),
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.bookmark_border,
-                    size: 35,
-                  ),
-                  activeIcon: Icon(
-                    Icons.bookmark,
-                    size: 35,
-                  ),
-                  label: 'Memo',
+                child: BottomNavigationBar(
+                  currentIndex: validIndex,
+                  onTap: (index) {
+                    context.go(routes[index]);
+                  },
+                  items: const [
+                    BottomNavigationBarItem(
+                      icon: Icon(
+                        Icons.home_outlined,
+                        size: 28,
+                      ),
+                      activeIcon: Icon(
+                        Icons.home,
+                        size: 28,
+                      ),
+                      label: 'HOME',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(
+                        Icons.event_note_outlined,
+                        size: 28,
+                      ),
+                      activeIcon: Icon(
+                        Icons.event_note,
+                        size: 28,
+                      ),
+                      label: 'NOTE',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(
+                        Icons.emoji_emotions_outlined,
+                        size: 28,
+                      ),
+                      activeIcon: Icon(
+                        Icons.emoji_emotions,
+                        size: 28,
+                      ),
+                      label: 'EMOJI',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(
+                        Icons.person_outline,
+                        size: 28,
+                      ),
+                      activeIcon: Icon(
+                        Icons.person,
+                        size: 28,
+                      ),
+                      label: 'MY',
+                    ),
+                  ],
+                  showUnselectedLabels: true,
+                  showSelectedLabels: true,
+                  selectedItemColor: Colors.black,
+                  unselectedItemColor: Colors.black45,
+                  type: BottomNavigationBarType.fixed,
+                  backgroundColor: Colors.transparent, // 배경 투명
+                  elevation: 0, // 그림자 제거
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.tag_faces_outlined,
-                    size: 35,
-                  ),
-                  activeIcon: Icon(
-                    Icons.tag_faces,
-                    size: 35,
-                  ),
-                  label: 'emoji',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.menu_outlined,
-                    size: 35, // 개별 아이콘 크기 설정
-                  ),
-                  activeIcon: Icon(
-                    Icons.menu,
-                    size: 35, // 개별 아이콘 크기 설정
-                  ),
-                  label: 'Menu',
-                ),
-              ],
-              showUnselectedLabels: false,
-              showSelectedLabels: false,
-              type: BottomNavigationBarType.fixed, // 아이템 이동 방지
-              enableFeedback: false)
-          : null,
+              )
+            : null,
+      ),
     );
   }
 }

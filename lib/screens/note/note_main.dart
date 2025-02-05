@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class EmojiMain extends StatefulWidget {
-  const EmojiMain({Key? key}) : super(key: key);
+class NoteMain extends StatefulWidget {
+  const NoteMain({Key? key}) : super(key: key);
 
   @override
-  State<EmojiMain> createState() => _EmojiMainState();
+  State<NoteMain> createState() => _NoteMainState();
 }
 
-class _EmojiMainState extends State<EmojiMain> {
+class _NoteMainState extends State<NoteMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +17,7 @@ class _EmojiMainState extends State<EmojiMain> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Welcome to the emoji Page!',
+              'Welcome to the note Page!',
             ),
             const SizedBox(height: 20),
             ElevatedButton(
