@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class AppColors {
   static const Color primary = Color(0xFF201D1D);
@@ -11,18 +12,41 @@ ThemeData appTheme = ThemeData(
     primarySwatch: Colors.brown,
   ).copyWith(
     secondary: AppColors.secondary,
-    background: AppColors.background,
   ),
   scaffoldBackgroundColor: Colors.transparent,
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Colors.transparent, // AppBar 배경 투명
+    elevation: 0, // 그림자 제거
+    titleTextStyle: TextStyle(
+      fontFamily: 'Arima',
+      fontSize: 24,
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+    ),
+  ),
   textTheme: const TextTheme(
-    headlineMedium: TextStyle(
-      fontFamily: 'Arima', // 영어 전용
+    headlineLarge: TextStyle(
+      fontFamily: 'Arima', // english
       fontSize: 36,
       fontWeight: FontWeight.bold,
     ),
+    headlineMedium: TextStyle(
+      fontFamily: 'Arima', // english
+      fontSize: 24,
+      fontWeight: FontWeight.bold,
+    ),
+    bodyLarge: TextStyle(
+      fontFamily: 'NanumGothic', // korean
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+    ),
     bodyMedium: TextStyle(
-      fontFamily: 'NanumGothic', // 한글 전용
+      fontFamily: 'NanumGothic', // korean
       fontSize: 16,
+    ),
+    bodySmall: TextStyle(
+      fontFamily: 'NanumGothic', // korean
+      fontSize: 11,
     ),
   ),
 );
@@ -34,14 +58,25 @@ class AppBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/background.png'),
-          fit: BoxFit.cover,
+    return Directionality(
+      textDirection: TextDirection.ltr, // 텍스트 방향 설정
+      child: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.dark,
+        child: Scaffold(
+          extendBodyBehindAppBar: true, // AppBar까지 배경 확장
+          body: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/background.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: SafeArea(
+              child: child,
+            ),
+          ),
         ),
       ),
-      child: child,
     );
   }
 }

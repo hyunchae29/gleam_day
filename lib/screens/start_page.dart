@@ -52,7 +52,7 @@ class _StartPageState extends State<StartPage>
               const SizedBox(height: 20),
               Text(
                 'Gleam Day',
-                style: Theme.of(context).textTheme.headlineMedium,
+                style: Theme.of(context).textTheme.headlineLarge,
               ),
               const SizedBox(height: 10),
               Text(
