@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../recommend/introduction.dart';
+import '../../models/emoji_model.dart';
 
 class Recommendation extends StatefulWidget {
   const Recommendation({Key? key}) : super(key: key);
@@ -11,14 +12,6 @@ class Recommendation extends StatefulWidget {
 }
 
 class _RecommendationState extends State<Recommendation> {
-  final List<String> sampleImages = [
-    'assets/images/5.png',
-    'assets/images/6.png',
-    'assets/images/7.png',
-    'assets/images/8.png',
-    'assets/images/9.png',
-  ];
-
   int currentImageIndex = 1;
   late Timer _timer;
 
@@ -56,9 +49,7 @@ class _RecommendationState extends State<Recommendation> {
                 children: [
                   Image.asset(
                     sampleImages[currentImageIndex],
-                    //fit: BoxFit.fill,
                     width: double.infinity,
-                    //height: 200,
                   ),
                   Positioned(
                     bottom: 20,
@@ -69,13 +60,6 @@ class _RecommendationState extends State<Recommendation> {
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
-                        shadows: [
-                          Shadow(
-                            blurRadius: 5.0,
-                            color: Colors.black,
-                            offset: Offset(1.0, 1.0),
-                          ),
-                        ],
                       ),
                     ),
                   ),
@@ -83,30 +67,35 @@ class _RecommendationState extends State<Recommendation> {
               ),
             ),
             Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Text(
-                  '오늘은 어떤 날인가요?',
-                  style: Theme.of(context).textTheme.bodyLarge,
-                )),
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                '오늘은 어떤 날인가요?',
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10.0),
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      _buildOptionCircle('날씨'),
-                      _buildOptionCircle('하늘'),
-                      _buildOptionCircle('기분'),
-                    ],
+                    children: categories
+                        .take(3)
+                        .map(
+                            (category) => _buildOptionCircle(context, category))
+                        .toList(),
                   ),
                   const SizedBox(height: 10),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly, // 가운데 정렬
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      _buildOptionCircle('분위기'),
-                      _buildOptionCircle('특별한'),
-                      _buildOptionCircle('투명'),
+                      ...categories.skip(3).take(2).map(
+                          (category) => _buildOptionCircle(context, category)),
+                      Opacity(
+                        opacity: 0.0,
+                        child: _buildOptionCircle(
+                            context, {"key": "transparent", "label": ""}),
+                      ),
                     ],
                   ),
                 ],
@@ -117,24 +106,32 @@ class _RecommendationState extends State<Recommendation> {
       ),
     );
   }
+}
 
-  Widget _buildOptionCircle(String label) {
-    return Column(
+Widget _buildOptionCircle(BuildContext context, Map<String, String> category) {
+  String imagePath = 'assets/categories/${category["key"]}.png';
+  return GestureDetector(
+    onTap: () => context.go('/home/new_recommendation', extra: category),
+    child: Column(
       children: [
         Container(
-          width: 60,
-          height: 60,
-          decoration: const BoxDecoration(
+          width: 70,
+          height: 70,
+          decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: Colors.grey,
+            color: const Color(0xFFD9D9D9),
+            image: DecorationImage(
+              image: AssetImage(imagePath),
+              fit: BoxFit.contain,
+            ),
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          label,
+          category["label"] ?? '',
           style: const TextStyle(fontSize: 14),
         ),
       ],
-    );
-  }
+    ),
+  );
 }

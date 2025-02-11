@@ -44,4 +44,4 @@ app.*.map.json
 
 *.plist
 *.json
-lib/database/firebase/firebase_options.dart
+lib/firebase_options.dart

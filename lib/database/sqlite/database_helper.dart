@@ -26,11 +26,23 @@ class DatabaseHelper {
   }
 
   Future<void> _createDB(Database db) async {
+    print("추천 디비 생성됨");
     await db.execute('''
       CREATE TABLE recommendations (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         category TEXT NOT NULL,
-        name TEXT NOT NULL
+        name TEXT NOT NULL,
+        created_at TEXT NOT NULL
+      )
+    ''');
+
+    // "과거의 오늘" - 주얼리 역사 저장 테이블
+    await db.execute('''
+      CREATE TABLE history (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        event_date TEXT NOT NULL,
+        title TEXT NOT NULL,
+        description TEXT NOT NULL
       )
     ''');
   }

@@ -1,11 +1,15 @@
 import 'package:go_router/go_router.dart';
 import 'frame_page.dart';
+import '../../models/emoji_model.dart';
 
 import '../start_page.dart';
+
 import '../recommend/introduction.dart';
 import '../recommend/recommendation.dart';
+import '../recommend/new_recommendation.dart';
 import '../recommend/history.dart';
 import '../recommend/fortune.dart';
+import '../recommend/result.dart';
 
 import '../note/note_main.dart';
 
@@ -22,6 +26,7 @@ class AppRouter {
         path: '/',
         builder: (context, state) => const StartPage(), // 시작 페이지
       ),
+      //todo JH bottomnavigation 사용법 변경. healthyclass 라우트 섹션 참고, nested route
       ShellRoute(
         builder: (context, state, child) => FramePage(child: child), // 공통 UI 적용
         routes: [
@@ -39,6 +44,21 @@ class AppRouter {
                       return child;
                     },
                   ),
+                ),
+                GoRoute(
+                  path: 'new_recommendation',
+                  builder: (context, state) {
+                    final option = state.extra as Map<String, String>? ??
+                        {"key": "default", "label": "기본 추천"};
+                    return NewRecommendation(option: option);
+                  },
+                ),
+                GoRoute(
+                  path: 'result',
+                  builder: (context, state) {
+                    final emoji = state.extra as Emoji;
+                    return ResultPage(emoji: emoji);
+                  },
                 ),
                 GoRoute(
                     path: 'history',
@@ -76,7 +96,6 @@ class AppRouter {
                     path: 'settings',
                     builder: (context, state) => const MemberSettings()),
               ]),
-          // 추가 경로는 여기에 정의
         ],
       ),
     ],

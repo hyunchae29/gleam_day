@@ -35,6 +35,8 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/categories/
+    - assets/emojis/
 
   fonts:
     - family: Arima

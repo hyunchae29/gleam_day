@@ -13,26 +13,26 @@ class MemberMain extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Welcome to the My Page!',
+              'My Page',
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                context.go('/'); // 메인 화면으로 이동
+                context.go('/');
               },
               child: const Text('Go Back'),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                context.go('/my/login'); // 로그인 페이지로 이동
+                context.go('/my/login');
               },
               child: const Text('Go to Login'),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                context.go('/my/settings'); // 알람 설정 페이지로 이동
+                context.go('/my/settings');
               },
               child: const Text('Go to Settings'),
             ),

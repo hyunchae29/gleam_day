@@ -19,14 +19,14 @@ class _EmojiMainState extends State<History> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Welcome to the History Page!',
+              'History Page!',
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                context.go('/'); // 이전 화면으로 이동
+                context.go('/');
               },
-              child: const Text('Go Back'),
+              child: const Text('Back'),
             ),
           ],
         ),

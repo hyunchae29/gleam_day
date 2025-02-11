@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+//todo JH: TopAppBar는 다른 파일로 분리
 class TopAppBar extends StatefulWidget implements PreferredSizeWidget {
   final int initialIndex;
 
@@ -72,6 +73,7 @@ class _TopAppBarState extends State<TopAppBar> {
 
     return AppBar(
       automaticallyImplyLeading: false,
+      scrolledUnderElevation: 0.0,
       title: Text(
         'Gleam Day',
         style: Theme.of(context).textTheme.headlineMedium,
@@ -91,7 +93,6 @@ class _TopAppBarState extends State<TopAppBar> {
                   Text(
                     menuTitles[index],
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          fontWeight: FontWeight.bold,
                           color: isSelected ? Colors.black : Colors.grey,
                         ),
                   ),

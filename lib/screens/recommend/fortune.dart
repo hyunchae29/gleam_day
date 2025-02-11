@@ -19,14 +19,14 @@ class _EmojiMainState extends State<Fortune> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Welcome to the Fortune Page!',
+              'Fortune Page!',
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                context.go('/'); // 이전 화면으로 이동
+                context.go('/');
               },
-              child: const Text('Go Back'),
+              child: const Text('Back'),
             ),
           ],
         ),

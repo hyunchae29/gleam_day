@@ -36,7 +36,7 @@ class _StartPageState extends State<StartPage>
     return GestureDetector(
       behavior: HitTestBehavior.opaque, // 화면 어디를 눌러도 감지
       onTap: () {
-        context.go('/home'); // /home으로 이동
+        context.go('/home');
       },
       child: Scaffold(
         body: Center(

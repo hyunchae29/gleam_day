@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+// 이거 더 세분화해서 분리해라
+
 class AppColors {
   static const Color primary = Color(0xFF201D1D);
   static const Color secondary = Color(0xFFFFD700);
@@ -15,8 +17,8 @@ ThemeData appTheme = ThemeData(
   ),
   scaffoldBackgroundColor: Colors.transparent,
   appBarTheme: const AppBarTheme(
-    backgroundColor: Colors.transparent, // AppBar 배경 투명
-    elevation: 0, // 그림자 제거
+    backgroundColor: Colors.transparent,
+    elevation: 0,
     titleTextStyle: TextStyle(
       fontFamily: 'Arima',
       fontSize: 24,
@@ -59,11 +61,11 @@ class AppBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.ltr, // 텍스트 방향 설정
+      textDirection: TextDirection.ltr,
       child: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.dark,
         child: Scaffold(
-          extendBodyBehindAppBar: true, // AppBar까지 배경 확장
+          extendBodyBehindAppBar: true,
           body: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(

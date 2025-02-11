@@ -4,6 +4,8 @@ import '../models/recommend_model.dart';
 import '../database/sqlite/database_helper.dart';
 
 class RecommendRepository {
+  //todo: jh, final db = await DatabaseHelper.instance.database; 를 함수 밖으로 뽑는게 좋겠음.
+
   // 추천 데이터 추가
   static Future<void> insertRecommendation(
       Recommendation recommendation) async {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../core/theme.dart'; // 테마 파일 import
+import '../../core/theme.dart';
 
 class FramePage extends StatelessWidget {
   final Widget child;
@@ -26,7 +26,7 @@ class FramePage extends StatelessWidget {
 
     return AppBackground(
       child: Scaffold(
-        backgroundColor: Colors.transparent, // Scaffold 배경 투명 설정
+        backgroundColor: Colors.transparent,
         body: child,
         bottomNavigationBar: showBottomNav
             ? Container(
