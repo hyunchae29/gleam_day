@@ -26,7 +26,9 @@ class AppRouter {
         path: '/',
         builder: (context, state) => const StartPage(), // 시작 페이지
       ),
+
       //todo JH bottomnavigation 사용법 변경. healthyclass 라우트 섹션 참고, nested route
+
       ShellRoute(
         builder: (context, state, child) => FramePage(child: child), // 공통 UI 적용
         routes: [

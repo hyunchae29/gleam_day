@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'screens/routers/app_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,11 @@ void main() async {
     const SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),
   );
 
-  runApp(const GleamDayApp());
+  runApp(
+    ProviderScope(
+      child: const GleamDayApp(),
+    ),
+  );
 }
 
 Future<void> checkDatabaseFile(Database db) async {

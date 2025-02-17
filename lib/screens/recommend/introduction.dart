@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 //todo JH: TopAppBar는 다른 파일로 분리
+// 공통 위젯으로 빼는 방향이 정당한가? 고민 필요성 있음
 class TopAppBar extends StatefulWidget implements PreferredSizeWidget {
   final int initialIndex;
 
