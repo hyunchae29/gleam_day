@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../common/recommend_message.dart';
 import '../../providers/note_provider.dart';
-import 'package:go_router/go_router.dart';
+
+//todo: filename, path, full_path 로 이미지 관리필요
 
 class NoteMain extends ConsumerWidget {
   const NoteMain({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    print('노트 데이터 로드 시도');
     final noteList = ref.watch(noteProvider).reversed.toList();
     final recommendedImages =
         ref.watch(recommendedImagesProvider).reversed.toList();
-    print('노트 데이터 로드 시도');
-    ref.read(noteProvider.notifier).loadNotes();
-    ref.read(recommendedImagesProvider.notifier).loadRecommendedImages();
     print('현재 노트 개수: ${noteList.length}');
 
     return Scaffold(
@@ -24,7 +24,7 @@ class NoteMain extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.add),
             onPressed: () {
-              context.go('/add_note');
+              showRecommendDialog(context);
             },
           ),
         ],

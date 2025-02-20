@@ -28,7 +28,8 @@ class NoteNotifier extends StateNotifier<List<NoteModel>> {
     state = notes;
   }
 
-  Future<void> addNote(NoteModel note) async {
+  Future<void> addNote(String title, String content) async {
+    final note = NoteModel(title: title, content: content);
     await _repository.addNote(note);
     state = [...state, note];
   }

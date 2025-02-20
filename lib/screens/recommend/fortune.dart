@@ -19,7 +19,7 @@ class _EmojiMainState extends State<Fortune> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Fortune Page!',
+              'rest api',
             ),
             const SizedBox(height: 20),
             ElevatedButton(

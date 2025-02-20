@@ -1,3 +1,5 @@
+import 'package:uuid/uuid.dart';
+
 class NoteModel {
   final String id;
   final String title;
@@ -6,20 +8,22 @@ class NoteModel {
   final String date;
 
   NoteModel({
-    required this.id,
+    String? id,
     required this.title,
     required this.content,
-    required this.imageUrl,
-    required this.date,
-  });
+    String? imageUrl,
+    String? date,
+  })  : id = id ?? const Uuid().v4(),
+        imageUrl = imageUrl ?? '',
+        date = date ?? DateTime.now().toIso8601String();
 
   factory NoteModel.fromMap(Map<String, dynamic> map) {
     return NoteModel(
-      id: map['id'] as String,
-      title: map['title'] as String,
-      content: map['content'] as String,
-      imageUrl: map['imageUrl'] as String,
-      date: map['date'] as String,
+      id: map['id'] as String?,
+      title: map['title'] as String? ?? '',
+      content: map['content'] as String? ?? '',
+      imageUrl: map['imageUrl'] as String?,
+      date: map['date'] as String?,
     );
   }
 

@@ -17,7 +17,7 @@ class _EmojiMainState extends State<EmojiMain> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Emoji Page',
+              '마지막',
             ),
             const SizedBox(height: 20),
             ElevatedButton(

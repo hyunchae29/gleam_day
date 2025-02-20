@@ -21,7 +21,8 @@ class _ResultPageState extends ConsumerState<ResultPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 1), () {
+      //duration 시간 조정 필요
       setState(() {
         isLoading = false;
       });
@@ -30,17 +31,20 @@ class _ResultPageState extends ConsumerState<ResultPage> {
 
   Future<void> _saveRecommendation() async {
     final recommendation = Recommendation(
-      category: widget.emoji.category,
-      name: widget.emoji.label,
-      createdAt: DateTime.now().toIso8601String(),
-    );
+        category: widget.emoji.category,
+        name: widget.emoji.label,
+        createdAt: DateTime.now().toIso8601String(),
+        imageURL: 'assets/jewelry/${widget.emoji.key.toLowerCase()}.png');
+
+    print(recommendation);
 
     final repository = ref.read(recommendRepositoryProvider);
     await repository.insertRecommendation(recommendation);
 
     print(
-        '✅ Recommendation saved: \${recommendation.category}, \${recommendation.name}');
+        'Recommendation saved: ${recommendation.category}, ${recommendation.name}, ${recommendation.imageURL}');
 
+    //디자인 변경 필요
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('추천이 저장되었습니다!')),
     );
@@ -78,7 +82,7 @@ class _ResultPageState extends ConsumerState<ResultPage> {
               child: Column(
                 children: [
                   Image.asset(
-                    'assets/jewelry/\${widget.emoji.key}.png',
+                    'assets/jewelry/${widget.emoji.key}.png',
                     width: 200,
                     height: 200,
                     errorBuilder: (context, error, stackTrace) =>
@@ -86,7 +90,7 @@ class _ResultPageState extends ConsumerState<ResultPage> {
                   ),
                   const SizedBox(height: 8),
                   Text("오늘의 추천은 ${widget.emoji.label} 스타일의 주얼리입니다!",
-                      style: Theme.of(context).textTheme.headlineSmall),
+                      style: Theme.of(context).textTheme.bodyMedium),
                 ],
               ),
             ),

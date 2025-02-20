@@ -2,6 +2,8 @@ import 'package:go_router/go_router.dart';
 import 'frame_page.dart';
 import '../../models/emoji_model.dart';
 
+import '../../common/recommend_message.dart';
+
 import '../start_page.dart';
 
 import '../recommend/introduction.dart';
@@ -12,12 +14,15 @@ import '../recommend/fortune.dart';
 import '../recommend/result.dart';
 
 import '../note/note_main.dart';
+import '../note/add_note.dart';
 
 import '../emoji/emoji_main.dart';
 
 import '../member/member_main.dart';
 import '../member/member_login.dart';
 import '../member/member_settings.dart';
+
+// 에러페이지 또한 라우터로 관리가 가능, 이렇게 ㅎ자ㅏ
 
 class AppRouter {
   static final router = GoRouter(
@@ -70,14 +75,13 @@ class AppRouter {
                     builder: (context, state) => const Fortune())
               ]),
           GoRoute(
-            path: '/note',
-            builder: (context, state) => const NoteMain(),
-            //routes: [
-            //   GoRoute(
-            //       path: '/example',
-            //       builder: (context, state) => const Example())
-            // ]  하위용
-          ),
+              path: '/note',
+              builder: (context, state) => const NoteMain(),
+              routes: [
+                GoRoute(
+                    path: 'add_note',
+                    builder: (context, state) => const AddNote()),
+              ]),
           GoRoute(
             path: '/emoji',
             builder: (context, state) => const EmojiMain(),
@@ -98,6 +102,15 @@ class AppRouter {
                     path: 'settings',
                     builder: (context, state) => const MemberSettings()),
               ]),
+          GoRoute(
+            path: '/recommend_message',
+            builder: (context, state) => const RecommendMessageDialog(),
+            //routes: [
+            //   GoRoute(
+            //       path: '/example',
+            //       builder: (context, state) => const Example())
+            // ]  하위용
+          ),
         ],
       ),
     ],

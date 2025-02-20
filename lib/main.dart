@@ -36,7 +36,7 @@ Future<void> checkDatabaseFile(Database db) async {
   final fileExists = await File(path).exists();
 
   if (fileExists) {
-    print('✅ Database file exists at: $path');
+    print('✅ Database file exists at: $path'); //SQLiteStudio 확인용
   } else {
     print('❌ Database file does not exist. Check your initialization code.');
   }
