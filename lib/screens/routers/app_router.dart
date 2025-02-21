@@ -93,7 +93,7 @@ class AppRouter {
           ),
           GoRoute(
               path: '/my',
-              builder: (context, state) => const MemberMain(),
+              builder: (context, state) => MemberMain(),
               routes: [
                 GoRoute(
                     path: 'login',

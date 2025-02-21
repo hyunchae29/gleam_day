@@ -32,7 +32,7 @@ class _HistoryState extends State<History> {
     메트로폴리탄 미술관은 이러한 풍부한 주얼리 컬렉션을 통해 방문객들에게 다양한 시대와 문화의 예술적 유산을 감상할 수 있는 기회를 제공합니다.
     더 자세한 정보는 메트로폴리탄 미술관 공식 웹사이트에서 확인하실 수 있습니다.
     ''',
-      'link': 'https://naver.com',
+      'link': 'https://www.metmuseum.org/',
     };
 
     _fetchHistory();

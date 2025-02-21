@@ -52,6 +52,10 @@
         <string>https</string>
     </array>
 
+    <key>GIDClientID</key>
+    <string>225491597745-f5r2tp882qqsfpbtvbfrdp2vp69hs7kl.apps.googleusercontent.com.apps.googleusercontent.com</string>
+
+
 	<!-- 알림 관련 권한 추가 -->
 	<key>UIBackgroundModes</key>
 	<array>
