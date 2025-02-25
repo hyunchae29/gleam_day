@@ -1,4 +1,4 @@
-# Gleam Day
+ # Gleam Day
 이 프로젝트는 Flutter로 개발한 데일리 주얼리 추천 앱입니다.
 
 GleamDay는 사용자의 하루 기분을 표현하는 이모지를 기반으로 다양한 악세서리를 추천해주는 앱입니다.
@@ -25,53 +25,69 @@ GleamDay가 추천하는 다양한 악세서리를 확인할 수 있습니다.
 ## 프로젝트 구조
 ``` dart
 Gleam Day
-├── database_helper.dart
+├── app_initializer.dart
+├── common
+│   ├── loading.dart
+│   ├── message.dart
+│   ├── recommend_message.dart
+│   └── warning_page.dart
+├── core
+│   ├── error_handler.dart
+│   └── theme.dart
+├── database
+│   ├── firebase
+│   └── sqlite
+│       └── database_helper.dart
+├── firebase_options.dart
 ├── main.dart
 ├── models
+│   ├── auth_model.dart
 │   ├── emoji_model.dart
-│   ├── memo_model.dart
-│   └── recommendation_model.dart
+│   ├── member_model.dart
+│   ├── note_model.dart
+│   └── recommend_model.dart
 ├── providers
+│   ├── auth_provider.dart
 │   ├── emoji_provider.dart
-│   ├── memo_provider.dart
-│   └── recommendation_provider.dart
+│   ├── member_provider.dart
+│   ├── note_provider.dart
+│   └── recommend_provider.dart
 ├── repositories
+│   ├── apple_auth_repository.dart
+│   ├── auth_repository.dart
 │   ├── emoji_repository.dart
-│   ├── memo_repository.dart
-│   └── recommendation_repository.dart
+│   ├── google_auth_repository.dart
+│   ├── kakao_auth_repository.dart
+│   ├── member_repository.dart
+│   ├── note_repository.dart
+│   └── recommend_repository.dart
 └── screens
     ├── emoji
-    │   ├── emoji_create.dart
-    │   ├── emoji_main.dart
-    │   └── emoji_setting.dart
-    ├── main_page.dart
-    ├── memo
-    │   ├── memo_main.dart
-    │   └── memo_saved.dart
-    ├── recommendation
-    │   ├── check_emotion.dart
-    │   ├── fail_1.dart
-    │   ├── fail_2.dart
-    │   ├── finding_page.dart
-    │   ├── luck.dart
-    │   ├── result.dart
-    │   ├── select_emoji.dart
-    │   ├── success_1.dart
-    │   └── success_2.dart
+    │   ├── add_emoji.dart
+    │   ├── add_emoji_new.dart
+    │   ├── edit_emoji.dart
+    │   ├── edit_emoji_detail.dart
+    │   ├── edit_emoji_select.dart
+    │   └── emoji_main.dart
+    ├── member
+    │   ├── member_main.dart
+    │   └── member_settings.dart
+    ├── note
+    │   ├── add_note.dart
+    │   ├── note_main.dart
+    │   └── recommend_list.dart
+    ├── recommend
+    │   ├── fortune.dart
+    │   ├── history.dart
+    │   ├── introduction.dart
+    │   ├── new_recommendation.dart
+    │   ├── recommendation.dart
+    │   └── result.dart
     ├── routers
     │   ├── app_router.dart
     │   └── frame_page.dart
-    ├── see_more
-    │   ├── clear_cache_page.dart
-    │   ├── lock_settings_page.dart
-    │   └── settings_page.dart
-    └── tutorial
-        ├── tutorial_luck.dart
-        ├── tutorial_main.dart
-        ├── tutorial_page_1.dart
-        ├── tutorial_page_2.dart
-        ├── tutorial_page_3.dart
-        └── tutorial_page_4.dart
+    └── start_page.dart
+
 ```
 ## 사용 기술
 - **Flutter**: 크로스 플랫폼 UI 개발
