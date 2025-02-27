@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-// todo: 이거 더 세분화해서 분리해라
+// todo: 이거 더 세분화해서 분리해라 , 분리하고 다시 이어줘야됨
 
 class AppColors {
   static const Color primary = Color(0xFF201D1D);

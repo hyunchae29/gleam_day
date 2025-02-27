@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../recommend/introduction.dart';
+import '../../common/custom_widget/recommend_top_app_bar.dart';
 import '../../repositories/recommend_repository.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -61,7 +61,7 @@ class _HistoryState extends State<History> {
     return Scaffold(
       appBar: TopAppBar(initialIndex: 2),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

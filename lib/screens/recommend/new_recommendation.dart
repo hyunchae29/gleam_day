@@ -83,7 +83,7 @@ class NewRecommendation extends StatelessWidget {
                     )
                   : Center(
                       child: Text(
-                        "이 카테고리에 해당하는 이모지가 없습니다. 이거 나오면 에러",
+                        "이 카테고리에 해당하는 이모지가 없습니다. 에러",
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ),

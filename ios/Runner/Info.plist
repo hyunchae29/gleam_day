@@ -46,15 +46,30 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 
+    <!-- ✅ 카카오 로그인 관련 설정 -->
+    <key>KAKAO_APP_KEY</key>
+    <string>f5eb2e11e8b8d46a6f584b253b1f614a</string>
+
     <key>LSApplicationQueriesSchemes</key>
     <array>
         <string>http</string>
         <string>https</string>
+        <string>kakaokompassauth</string>
+        <string>kakaolink</string>
+    </array>
+
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>kakaof5eb2e11e8b8d46a6f584b253b1f614a</string>
+            </array>
+        </dict>
     </array>
 
     <key>GIDClientID</key>
-    <string>225491597745-f5r2tp882qqsfpbtvbfrdp2vp69hs7kl.apps.googleusercontent.com.apps.googleusercontent.com</string>
-
+    <string>225491597745-f5r2tp882qqsfpbtvbfrdp2vp69hs7kl.apps.googleusercontent.com</string>
 
 	<!-- 알림 관련 권한 추가 -->
 	<key>UIBackgroundModes</key>

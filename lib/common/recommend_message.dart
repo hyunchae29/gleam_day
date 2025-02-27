@@ -8,15 +8,11 @@ class RecommendMessageDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text("추천된 리스트 중 하나를 가져올까요?"),
+      title: Text(
+        '추천된 리스트 중 하나를 가져올까요?',
+        style: Theme.of(context).textTheme.bodyMedium,
+      ),
       actions: [
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context); // 다이얼로그 닫기
-            context.push('/note/add_note');
-          },
-          child: const Text("아니요"),
-        ),
         TextButton(
           onPressed: () {
             Navigator.pop(context); // 다이얼로그 닫기
@@ -24,6 +20,13 @@ class RecommendMessageDialog extends StatelessWidget {
             // Diallog 클래스 호출 필요
           },
           child: const Text("예"),
+        ),
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context); // 다이얼로그 닫기
+            context.push('/note/add_note');
+          },
+          child: const Text("아니요"),
         ),
       ],
     );

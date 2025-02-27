@@ -22,6 +22,10 @@
                 android:name="io.flutter.embedding.android.NormalTheme"
                 android:resource="@style/NormalTheme"
                 />
+            <meta-data
+                android:name="com.kakao.sdk.AppKey"
+                android:value="f5eb2e11e8b8d46a6f584b253b1f614a"
+                />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

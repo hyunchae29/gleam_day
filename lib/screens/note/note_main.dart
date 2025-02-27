@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../common/recommend_message.dart';
 import '../../providers/note_provider.dart';
+import '../../common/message.dart';
 
 //todo: filename, path, full_path 로 이미지 관리필요
 
@@ -34,19 +35,35 @@ class NoteMain extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               '최근 추천받은 주얼리',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
             const SizedBox(height: 12),
             recommendedImages.isEmpty
                 ? SizedBox(
                     height: 200,
                     child: Center(
-                        child: Text(
-                      '저장된 추천 이미지가 없습니다',
-                      style: Theme.of(context).textTheme.bodySmall,
-                    )))
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '저장된 추천 이미지가 없습니다',
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                          const SizedBox(height: 12),
+                          ElevatedButton(
+                            onPressed: () {
+                              showMessageDialog(context);
+                            },
+                            child: Text(
+                              '추천 받기',
+                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ))
                 : SizedBox(
                     height: 200,
                     child: ListView.builder(
@@ -65,36 +82,57 @@ class NoteMain extends ConsumerWidget {
             const Divider(
               thickness: 1,
               height: 30,
-              color: Colors.pink,
-            ), //구분선 나중에 지울예정
+              color: Colors.grey,
+            ),
             const SizedBox(height: 20),
             Expanded(
-              child: noteList.isEmpty
-                  ? Center(
-                      child: Text(
-                      '새로운 메모를 작성해보세요',
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ))
-                  : ListView.builder(
-                      itemCount: noteList.length,
-                      itemBuilder: (context, index) {
-                        final note = noteList[index];
-                        return Card(
-                          child: ListTile(
-                            title: Text(note.title),
-                            subtitle: Text(note.content,
-                                maxLines: 2, overflow: TextOverflow.ellipsis),
-                            onTap: () {
-                              Navigator.pushNamed(
-                                context,
-                                '/result',
-                                arguments: note,
+              child: Column(
+                children: [
+                  noteList.isEmpty
+                      ? Center(
+                          child: Text(
+                            '새로운 메모를 작성해 보세요.',
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        )
+                      : Expanded(
+                          // 리스트뷰를 올바르게 배치
+                          child: ListView.builder(
+                            itemCount: noteList.length,
+                            itemBuilder: (context, index) {
+                              final note = noteList[index];
+                              return Card(
+                                child: ListTile(
+                                  title: Text(note.title),
+                                  subtitle: Text(
+                                    note.content,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                      context,
+                                      '/result',
+                                      arguments: note,
+                                    );
+                                  },
+                                ),
                               );
                             },
                           ),
-                        );
-                      },
+                        ),
+                  const SizedBox(height: 12), // 버튼과 리스트 간격 조정
+                  ElevatedButton(
+                    onPressed: () {
+                      showRecommendDialog(context);
+                    },
+                    child: Text(
+                      '메모 작성',
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

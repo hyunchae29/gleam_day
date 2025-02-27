@@ -1,118 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import '../../common/custom_widget/recommend_top_app_bar.dart';
 
-//todo JH: TopAppBar는 다른 파일로 분리
+//todo JH: TopAppBar는 다른 파일로 분리, common/appbarWidget/recommend_topapp, common/appbarWidget/emoji_topapp 추가 필요
 // 공통 위젯으로 빼는 방향이 정당한가? 고민 필요성 있음
-class TopAppBar extends StatefulWidget implements PreferredSizeWidget {
-  final int initialIndex;
-
-  const TopAppBar({
-    Key? key,
-    this.initialIndex = 0,
-  }) : super(key: key);
-
-  @override
-  Size get preferredSize => const Size.fromHeight(80);
-
-  @override
-  State<TopAppBar> createState() => _TopAppBarState();
-}
-
-class _TopAppBarState extends State<TopAppBar> {
-  late int currentIndex;
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _updateCurrentIndex();
-    });
-    super.initState();
-    currentIndex = widget.initialIndex;
-  }
-
-  void _updateCurrentIndex() {
-    String currentPath = GoRouterState.of(context).uri.toString();
-    if (currentPath == '/home') {
-      currentIndex = 0;
-    } else if (currentPath == '/home/recommendation') {
-      currentIndex = 1;
-    } else if (currentPath == '/home/history') {
-      currentIndex = 2;
-    } else if (currentPath == '/home/fortune') {
-      currentIndex = 3;
-    }
-  }
-
-  void onMenuTap(int index) {
-    setState(() {
-      currentIndex = index;
-    });
-    switch (index) {
-      case 0:
-        context.go('/home');
-        _updateCurrentIndex();
-        break;
-      case 1:
-        context.go('/home/recommendation');
-        _updateCurrentIndex();
-        break;
-      case 2:
-        context.go('/home/history');
-        _updateCurrentIndex();
-        break;
-      case 3:
-        context.go('/home/fortune');
-        _updateCurrentIndex();
-        break;
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final menuTitles = ['홈', '추천', '과거의 오늘', '포춘쿠키'];
-
-    return AppBar(
-      automaticallyImplyLeading: false,
-      scrolledUnderElevation: 0.0,
-      title: Text(
-        'Gleam Day',
-        style: Theme.of(context).textTheme.headlineMedium,
-      ),
-      centerTitle: true,
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: List.generate(menuTitles.length, (index) {
-            final isSelected = index == currentIndex;
-            return GestureDetector(
-              onTap: () => onMenuTap(index),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    menuTitles[index],
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: isSelected ? Colors.black : Colors.grey,
-                        ),
-                  ),
-                  if (isSelected)
-                    Container(
-                      margin: const EdgeInsets.only(top: 5),
-                      height: 2,
-                      width: 20,
-                      color: Colors.black,
-                    ),
-                ],
-              ),
-            );
-          }),
-        ),
-      ),
-    );
-  }
-}
 
 class Introduction extends StatefulWidget {
   const Introduction({Key? key}) : super(key: key);
@@ -127,7 +17,7 @@ class _IntroductionState extends State<Introduction> {
     return Scaffold(
       appBar: const TopAppBar(initialIndex: 0),
       body: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         children: [
           buildImageCard(
             context,

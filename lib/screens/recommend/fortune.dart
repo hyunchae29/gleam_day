@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../recommend/introduction.dart';
+import '../../common/custom_widget/recommend_top_app_bar.dart';
 
 class Fortune extends StatefulWidget {
   const Fortune({Key? key}) : super(key: key);

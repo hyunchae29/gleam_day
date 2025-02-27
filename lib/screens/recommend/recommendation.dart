@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../recommend/introduction.dart';
+import '../../common/custom_widget/recommend_top_app_bar.dart';
 import '../../models/emoji_model.dart';
 
 class Recommendation extends StatefulWidget {
@@ -44,7 +44,7 @@ class _RecommendationState extends State<Recommendation> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5),
+              padding: const EdgeInsets.symmetric(vertical: 3),
               child: Stack(
                 children: [
                   Image.asset(
@@ -67,7 +67,7 @@ class _RecommendationState extends State<Recommendation> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16),
               child: Text(
                 '오늘은 어떤 날인가요?',
                 style: Theme.of(context).textTheme.bodyLarge,

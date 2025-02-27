@@ -17,8 +17,8 @@ class AddNote extends ConsumerWidget {
             style: Theme.of(context).textTheme.headlineMedium),
         centerTitle: false,
         actions: [
-          IconButton(
-            icon: const Icon(Icons.add),
+          TextButton(
+            child: Text('저장'),
             onPressed: () {
               final title = titleController.text.trim();
               final content = contentController.text.trim();

@@ -17,9 +17,11 @@ import '../note/note_main.dart';
 import '../note/add_note.dart';
 
 import '../emoji/emoji_main.dart';
+import '../emoji/add_emoji.dart';
+import '../emoji/edit_emoji.dart';
 
 import '../member/member_main.dart';
-import '../member/member_login.dart';
+import '../member/X_member_login.dart';
 import '../member/member_settings.dart';
 
 // 에러페이지 또한 라우터로 관리가 가능, 이렇게 ㅎ자ㅏ
@@ -38,77 +40,111 @@ class AppRouter {
         builder: (context, state, child) => FramePage(child: child), // 공통 UI 적용
         routes: [
           GoRoute(
-              path: '/home',
-              builder: (context, state) => const Introduction(),
-              routes: [
-                GoRoute(
-                  path: 'recommendation',
-                  pageBuilder: (context, state) => CustomTransitionPage(
-                    child: const Recommendation(),
-                    transitionDuration: Duration.zero,
-                    transitionsBuilder:
-                        (context, animation, secondaryAnimation, child) {
-                      return child;
-                    },
-                  ),
+            path: '/home',
+            pageBuilder: (context, state) => NoTransitionPage(
+              child: const Introduction(),
+            ),
+            routes: [
+              GoRoute(
+                path: 'recommendation',
+                pageBuilder: (context, state) => NoTransitionPage(
+                  child: const Recommendation(),
                 ),
-                GoRoute(
-                  path: 'new_recommendation',
-                  builder: (context, state) {
-                    final option = state.extra as Map<String, String>? ??
-                        {"key": "default", "label": "기본 추천"};
-                    return NewRecommendation(option: option);
-                  },
+              ),
+              GoRoute(
+                path: 'new_recommendation',
+                pageBuilder: (context, state) {
+                  final option = state.extra as Map<String, String>? ??
+                      {"key": "default", "label": "기본 추천"};
+                  return NoTransitionPage(
+                    child: NewRecommendation(option: option),
+                  );
+                },
+              ),
+              GoRoute(
+                path: 'result',
+                pageBuilder: (context, state) {
+                  final emoji = state.extra as Emoji;
+                  return NoTransitionPage(
+                    child: ResultPage(emoji: emoji),
+                  );
+                },
+              ),
+              GoRoute(
+                path: 'history',
+                pageBuilder: (context, state) => NoTransitionPage(
+                  child: const History(),
                 ),
-                GoRoute(
-                  path: 'result',
-                  builder: (context, state) {
-                    final emoji = state.extra as Emoji;
-                    return ResultPage(emoji: emoji);
-                  },
+              ),
+              GoRoute(
+                path: 'fortune',
+                pageBuilder: (context, state) => NoTransitionPage(
+                  child: const Fortune(),
                 ),
-                GoRoute(
-                    path: 'history',
-                    builder: (context, state) => const History()),
-                GoRoute(
-                    path: 'fortune',
-                    builder: (context, state) => const Fortune())
-              ]),
-          GoRoute(
-              path: '/note',
-              builder: (context, state) => const NoteMain(),
-              routes: [
-                GoRoute(
-                    path: 'add_note',
-                    builder: (context, state) => const AddNote()),
-              ]),
-          GoRoute(
-            path: '/emoji',
-            builder: (context, state) => const EmojiMain(),
-            //routes: [
-            //   GoRoute(
-            //       path: '/example',
-            //       builder: (context, state) => const Example())
-            // ]  하위용
+              ),
+            ],
           ),
           GoRoute(
-              path: '/my',
-              builder: (context, state) => MemberMain(),
-              routes: [
-                GoRoute(
-                    path: 'login',
-                    builder: (context, state) => const MemberLogin()),
-                GoRoute(
-                    path: 'settings',
-                    builder: (context, state) => const MemberSettings()),
-              ]),
+            path: '/note',
+            pageBuilder: (context, state) => NoTransitionPage(
+              child: const NoteMain(),
+            ),
+            routes: [
+              GoRoute(
+                path: 'add_note',
+                pageBuilder: (context, state) => NoTransitionPage(
+                  child: const AddNote(),
+                ),
+              ),
+            ],
+          ),
+          GoRoute(
+            path: '/emoji',
+            pageBuilder: (context, state) => NoTransitionPage(
+              child: const EmojiMain(),
+            ),
+            routes: [
+              GoRoute(
+                path: 'add_emoji',
+                pageBuilder: (context, state) => NoTransitionPage(
+                  child: const AddEmoji(),
+                ),
+              ),
+              GoRoute(
+                path: 'edit_emoji',
+                pageBuilder: (context, state) => NoTransitionPage(
+                  child: const EditEmoji(),
+                ),
+              ),
+            ],
+          ),
+          GoRoute(
+            path: '/my',
+            pageBuilder: (context, state) => NoTransitionPage(
+              child: MemberMain(),
+            ),
+            routes: [
+              GoRoute(
+                path: 'login',
+                pageBuilder: (context, state) => NoTransitionPage(
+                  child: const MemberLogin(),
+                ),
+              ),
+              GoRoute(
+                path: 'settings',
+                pageBuilder: (context, state) => NoTransitionPage(
+                  child: const MemberSettings(),
+                ),
+              ),
+            ],
+          ),
           GoRoute(
             path: '/recommend_message',
             builder: (context, state) => const RecommendMessageDialog(),
             //routes: [
             //   GoRoute(
             //       path: '/example',
-            //       builder: (context, state) => const Example())
+            //       builder: (context, state) => const Exam ple())
             // ]  하위용
           ),
         ],

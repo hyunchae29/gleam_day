@@ -8,10 +8,14 @@ import 'package:sqflite/sqflite.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'screens/routers/app_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kakao_flutter_sdk/kakao_flutter_sdk_user.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  // ✅ Kakao SDK 초기화 추가
+  KakaoSdk.init(nativeAppKey: 'f5eb2e11e8b8d46a6f584b253b1f614a');
 
   await resetDatabase(); // 기존 db 삭제 및 초기화
   final db = await DatabaseHelper

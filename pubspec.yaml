@@ -27,6 +27,7 @@ dependencies:
   flutter_svg: ^2.0.17
 
   google_sign_in: ^6.2.2
+  kakao_flutter_sdk: ^1.9.6
 
 # 아래 패키지들은 삭제할 가능성 있음
   intl: ^0.19.0
